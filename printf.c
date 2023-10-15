@@ -3,7 +3,30 @@
 #include <string.h>
 #include <stdio.h>
 #include "main.h"
+/**
+ * _printdigit - prints out a interger.
+ * @i: interger
+ * Return: 0 (success)
+ */
+int _printdigit(int i)
+{
+	int n = i;
+	char c, neg = '-';
 
+	if (i < 0)
+	{
+		write(1, &neg, 1);
+		n = i * -1;
+	}
+	if (n > 9)
+	{
+		_printdigit(n / 10);
+		n = n % 10;
+	}
+	c = n + '0';
+	write(1, &c, 1);
+	return (0);
+}
 /**
  * _strlen - A function that returns the length of a string
  * @c: the function argument
@@ -41,11 +64,10 @@ int _string(char *str)
 int _printf(const char *format, ...)
 {
 	va_list arg;
-	int i;
-	int count = 0;
+	int i, count = 0;
+	char c, *str;
 
 	va_start(arg, format);
-
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
@@ -53,31 +75,31 @@ int _printf(const char *format, ...)
 			i++;
 			if (format[i] == 'c')
 			{
-				char c = va_arg(arg, int);
-
+				c = va_arg(arg, int);
 				write(1, &c, 1);
 				count++;
 			}
 			else if (format[i] == 's')
 			{
-				char *str = va_arg(arg, char *);
-
+				str = va_arg(arg, char *);
 				count += _string(str);
 			}
 			else if (format[i] == '%')
 			{
-				char p = '%';
-
-				write(1, &p, 1);
-				count++;
-			}
-			else
-			{
 				write(1, &format[i], 1);
 				count++;
 			}
+			else if (format[i] == 'd' || format[i] == 'i')
+			{
+				_printdigit(va_arg(arg, int));
+			}
+		}
+		else
+		{
+			write(1, &format[i], 1);
+			count++;
 		}
 	}
-			va_end(arg);
-			return (count);
+	va_end(arg);
+	return (count);
 }

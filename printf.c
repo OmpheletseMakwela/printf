@@ -82,7 +82,7 @@ int _printf(const char *format, ...)
 			else if (format[i] == 's')
 			{
 				str = va_arg(arg, char *);
-				count += _string(str);
+				count += (_string(str) - 1);
 			}
 			else if (format[i] == '%')
 			{

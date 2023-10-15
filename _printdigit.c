@@ -10,21 +10,20 @@
  */
 int _printdigit(int i)
 {
-        int n = i;
-        char c, neg = '-';
+	int n = i;
+	char c, neg = '-';
 
-        if (i < 0)
-        {
-                write(1, &neg, 1);
-                n = i * -1;
-        }
-        if (n > 9)
-        {
-                _printdigit(n / 10);
-                n = n % 10;
-        }
-        c = n + '0';
-        write(1, &c, 1);
-        return (0);
+	if (i < 0)
+	{
+		write(1, &neg, 1);
+		n = i * -1;
+	}
+	if (n > 9)
+	{
+		_printdigit(n / 10);
+		n = n % 10;
+	}
+	c = n + '0';
+	write(1, &c, 1);
+	return (0);
 }
-

@@ -43,35 +43,44 @@ int _printf(const char *format, ...)
 	int i, count = 0;
 	char c, *str;
 
+	if (format == NULL)
+	{
+		return (-1);
+	}
+
 	va_start(arg, format);
 	for (i = 0; format[i] != '\0'; i++)
 	{
 		if (format[i] == '%')
 		{
-			i++;
-			if (format[i] == 'c')
+			if (format[i + 1] == 'c')
 			{
 				c = va_arg(arg, int);
 				write(1, &c, 1);
+				i++;
 				count++;
 			}
-			else if (format[i] == 's')
+			else if (format[i + 1] == 's')
 			{
 				str = va_arg(arg, char *);
+				i++;
 				count += _string(str);
 			}
-			else if (format[i] == '%')
+			else if (format[i + 1] == '%')
 			{
 				write(1, &format[i], 1);
+				i++;
 				count++;
 			}
-			else if (format[i] == 'd' || format[i] == 'i')
+			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 			{
 				count += _printdigit(va_arg(arg, int));
+				i++;
 			}
-			else if (format[i] == 'b')
+			else if (format[i + 1] == 'b')
 			{
 				_print_binary(va_arg(arg, int));
+				i++;
 			}
 		}
 		else

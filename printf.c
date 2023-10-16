@@ -79,7 +79,7 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1] == 'b')
 			{
-				_print_binary(va_arg(arg, int));
+				count += _print_binary(va_arg(arg, int));
 				i++;
 			}
 		}

@@ -67,7 +67,7 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i] == 'd' || format[i] == 'i')
 			{
-				_printdigit(va_arg(arg, int));
+				count += _printdigit(va_arg(arg, int));
 			}
 			else if (format[i] == 'b')
 			{

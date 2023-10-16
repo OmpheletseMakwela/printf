@@ -10,6 +10,7 @@
 int _print_binary(int i)
 {
 	int mod;
+	int count = 1;
 	char convert;
 
 	if (i == 0)
@@ -18,10 +19,10 @@ int _print_binary(int i)
 	}
 	else
 	{
-		_print_binary(i / 2);
+		count += _print_binary(i / 2);
 		mod = i % 2;
 		convert = mod + '0';
 		write(1, &convert, 1);
 	}
-	return (0);
+	return (count);
 }

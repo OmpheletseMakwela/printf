@@ -6,5 +6,4 @@ int _print_binary(int i);
 int _strlen(char *c);
 int _string(char *str);
 
-
 #endif /* MAIN_H */

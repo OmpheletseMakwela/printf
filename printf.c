@@ -93,6 +93,10 @@ int _printf(const char *format, ...)
 			{
 				_printdigit(va_arg(arg, int));
 			}
+			else if (format[i] == 'b')
+			{
+				_print_binary(va_arg(arg, int));
+			}
 		}
 		else
 		{

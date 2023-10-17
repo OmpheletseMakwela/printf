@@ -8,5 +8,7 @@ int _string(char *str);
 int _printdigit(int i);
 int hex(int n);
 int hexadecimal(int n);
+int _print_unsigned(unsigned int i);
+int _print_octal(int i);
 
 #endif /* MAIN_H */

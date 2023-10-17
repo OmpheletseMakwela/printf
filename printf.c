@@ -111,6 +111,11 @@ int _printf(const char *format, ...)
 				count += _print_unsigned(va_arg(arg, unsigned int));
 				i++;
 			}
+			else if (format[i + 1] == 'S')
+			{
+				count += _print_hex_string(va_arg(arg, char *));
+				i++;
+			}
 			else if (format[i + 1] == 'p')
 			{
 				count += pointer(arg);

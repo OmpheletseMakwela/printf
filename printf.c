@@ -116,6 +116,11 @@ int _printf(const char *format, ...)
 				count += _print_hex_string(va_arg(arg, char *));
 				i++;
 			}
+			else if (format[i + 1] == 'r')
+			{
+				count += _print_reverse(va_arg(arg, char *));
+				i++;
+			}
 			else if (format[i + 1] == 'p')
 			{
 				count += pointer(arg);

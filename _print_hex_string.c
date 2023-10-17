@@ -19,6 +19,10 @@ int _print_hex_string(char *s)
 {
 	int convert, len = _strlen(s), count = 0, x;
 
+	if (s == NULL)
+	{
+		return (-1);
+	}
 	for (x = 0; x < len; x++)
 	{
 		convert = s[x];

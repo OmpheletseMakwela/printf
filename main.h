@@ -1,6 +1,8 @@
 #ifndef MAIN_H
 #define MAIN_H
 
+#include <stdarg.h>
+
 int _printf(const char *format, ...);
 int _print_binary(unsigned int i);
 int _strlen(char *c);
@@ -10,5 +12,6 @@ int hex(int n);
 int hexadecimal(int n);
 int _print_unsigned(unsigned int i);
 int _print_octal(int i);
+int pointer(va_list arg);
 
 #endif /* MAIN_H */

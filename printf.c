@@ -82,6 +82,16 @@ int _printf(const char *format, ...)
 				count += _print_binary(va_arg(arg, int));
 				i++;
 			}
+			else if (format[i + 1] == 'x')
+			{
+				count += hex(va_arg(arg, int));
+				i++;
+			}
+			else if (format[i + 1] == 'X')
+			{
+				count += hexadecimal(va_arg(arg, int));
+				i++;
+			}
 		}
 		else
 		{

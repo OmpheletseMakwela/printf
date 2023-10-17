@@ -40,8 +40,9 @@ int _string(char *str)
 int _printf(const char *format, ...)
 {
 	va_list arg;
-	int i, count = 0, b;
+	int i, count = 0;
 	char c, *str, b2;
+	unsigned int b;
 
 	if (format == NULL)
 	{
@@ -79,7 +80,7 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1] == 'b')
 			{
-				 b = va_arg(arg, int);
+				 b = va_arg(arg, unsigned int);
 				if (b != 0)
 					count += _print_binary(b);
 				else
@@ -107,7 +108,7 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1] == 'u')
 			{
-				count += _print_unsigned(va_arg(arg, int));
+				count += _print_unsigned(va_arg(arg, unsigned int));
 				i++;
 			}
 		}

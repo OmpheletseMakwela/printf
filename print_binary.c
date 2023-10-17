@@ -7,13 +7,14 @@
  * @i: integer
  * Return: 0 always a success
  */
-int _print_binary(int i)
+int _print_binary(unsigned int i)
 {
 	int mod;
 	int count = 1;
 	char convert;
+	unsigned int x = 0;
 
-	if (i == 0)
+	if (i == x)
 	{
 		return (0);
 	}

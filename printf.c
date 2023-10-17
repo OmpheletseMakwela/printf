@@ -40,8 +40,8 @@ int _string(char *str)
 int _printf(const char *format, ...)
 {
 	va_list arg;
-	int i, count = 0;
-	char c, *str;
+	int i, count = 0, b;
+	char c, *str, b2;
 
 	if (format == NULL)
 	{
@@ -79,7 +79,15 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1] == 'b')
 			{
-				count += _print_binary(va_arg(arg, int));
+				 b = va_arg(arg, int);
+				if (b != 0)
+					count += _print_binary(b);
+				else
+				{
+					b2 = '0';
+					write(1, &b2, 1);
+					count++;
+				}
 				i++;
 			}
 		}

@@ -90,6 +90,26 @@ int _printf(const char *format, ...)
 				}
 				i++;
 			}
+			else if (format[i + 1] == 'x')
+			{
+				count += hex(va_arg(arg, int));
+				i++;
+			}
+			else if (format[i + 1] == 'X')
+			{
+				count += hexadecimal(va_arg(arg, int));
+				i++;
+			}
+			else if (format[i + 1] == 'o')
+			{
+				count += _print_octal(va_arg(arg, int));
+			       i++;
+			}
+			else if (format[i + 1] == 'u')
+			{
+				count += _print_unsigned(va_arg(arg, int));
+				i++;
+			}
 		}
 		else
 		{

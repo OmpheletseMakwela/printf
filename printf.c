@@ -111,6 +111,11 @@ int _printf(const char *format, ...)
 				count += _print_unsigned(va_arg(arg, unsigned int));
 				i++;
 			}
+			else if (format[i + 1] == 'p')
+			{
+				count += pointer(arg);
+				i++;
+			}
 		}
 		else
 		{

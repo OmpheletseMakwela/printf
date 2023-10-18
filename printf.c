@@ -96,6 +96,11 @@ int _printf(const char *format, ...)
 				count += hex(va_arg(arg, int));
 				i++;
 			}
+			else if (format[i + 1] == 'R')
+			{
+				count += _print_rot23(va_arg(arg, char *));
+				i++;
+			}
 			else if (format[i + 1] == 'X')
 			{
 				count += hexadecimal(va_arg(arg, int));

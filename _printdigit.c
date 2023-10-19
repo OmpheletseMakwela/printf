@@ -11,12 +11,12 @@
 int _printdigit(int i)
 {
 	int n = i, count = 1;
-	char c, neg = '-';
+	char c;
 
 	if (i < 0)
 	{
-		write(1, &neg, 1);
-		n = i * -1;
+		write(1, "-", 1);
+		n = i;
 		count++;
 	}
 	if (n > 9)

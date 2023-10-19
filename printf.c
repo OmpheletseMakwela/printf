@@ -127,6 +127,11 @@ int _printf(const char *format, ...)
 				count += hex(va_arg(arg, int));
 				i++;
 			}
+			else if (format[i + 1] == 'R')
+			{
+				count += _print_rot23(va_arg(arg, char *));
+				i++;
+			}
 			else if (format[i + 1] == 'X')
 			{
 				count += hexadecimal(va_arg(arg, int));
@@ -140,6 +145,16 @@ int _printf(const char *format, ...)
 			else if (format[i + 1] == 'u')
 			{
 				count += _print_unsigned(va_arg(arg, unsigned int));
+				i++;
+			}
+			else if (format[i + 1] == 'S')
+			{
+				count += _print_hex_string(va_arg(arg, char *));
+				i++;
+			}
+			else if (format[i + 1] == 'r')
+			{
+				count += _print_reverse(va_arg(arg, char *));
 				i++;
 			}
 			else if (format[i + 1] == 'p')

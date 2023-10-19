@@ -13,5 +13,9 @@ int hexadecimal(int n);
 int _print_unsigned(unsigned int i);
 int _print_octal(int i);
 int pointer(va_list arg);
+int _print_hex_string(char * s);
+int _print_reverse (char *s);
+int _putchar(char c);
+int _print_rot23(char *r);
 
 #endif /* MAIN_H */

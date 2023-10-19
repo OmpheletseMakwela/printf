@@ -81,33 +81,10 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 			{
-				int value = va_arg(arg, int);
-				if (flag == ' ' || (value >= 0 && flag == '+'))
-				{
-					write(1, " ", 1);
-					i++;
-					count++;
-				}
-				else if (value < 0)
-				{
-					write(1, "-", 1);
-					value = -value;
-					i++;
-					count++;
-				}
-				if (flag == '+')
-				{
-					write(1, "+", 1);
-					i++;
-					count++;
-				}
-				else if (flag == ' ')
-				{
-					write(1, " ", 1);
-					i++;
-					count++;
-				}
-				count += _printdigit(value);
+				c = va_arg(arg, int);
+				write(1, &c, 1);
+				i++;
+				count++;
 			}
 			else if (format[i + 1] == 'b')
 			{

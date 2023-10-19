@@ -15,8 +15,8 @@ int _printdigit(int i)
 
 	if (i < 0)
 	{
-		write(1, "&neg", 1);
-		n = i * -1;
+		write(1, &neg, 1);
+		n = i * - 1;
 		count++;
 	}
 	if (n > 9)

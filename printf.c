@@ -43,6 +43,7 @@ int _printf(const char *format, ...)
 	int i, count = 0;
 	char c, *str, b2;
 	unsigned int b;
+	char flag = '\0';
 
 	if (format == NULL)
 	{
@@ -54,6 +55,10 @@ int _printf(const char *format, ...)
 	{
 		if (format[i] == '%')
 		{
+			while (format[i] == '+' || format[i] == ' ')
+			{
+				flag = format[i];
+				i++;
 			if (format[i + 1] == 'c')
 			{
 				c = va_arg(arg, int);
@@ -68,6 +73,7 @@ int _printf(const char *format, ...)
 				count += _string(str);
 			}
 			else if (format[i + 1] == '%')
+
 			{
 				write(1, &format[i], 1);
 				i++;
@@ -75,8 +81,33 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 			{
-				count += _printdigit(va_arg(arg, int));
-				i++;
+				int value = va_arg(arg, int);
+				if (flag == ' ' || (value >= 0 && flag == '+'))
+				{
+					write(1, " ", 1);
+					i++;
+					count++;
+				}
+				else if (value < 0)
+				{
+					write(1, "-", 1);
+					value = -value;
+					i++;
+					count++;
+				}
+				if (flag == '+')
+				{
+					write(1, "+", 1);
+					i++;
+					count++;
+				}
+				else if (flag == ' ')
+				{
+					write(1, " ", 1);
+					i++;
+					count++;
+				}
+				count += _printdigit(value);
 			}
 			else if (format[i + 1] == 'b')
 			{
@@ -116,6 +147,8 @@ int _printf(const char *format, ...)
 				count += pointer(arg);
 				i++;
 			}
+			
+		}
 		}
 		else
 		{

@@ -81,8 +81,15 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1] == 'd' || format[i + 1] == 'i')
 			{
+<<<<<<< HEAD
 				count += _printdigit(va_arg(arg, int));
 				i++;
+=======
+				c = va_arg(arg, int);
+				write(1, &c, 1);
+				i++;
+				count++;
+>>>>>>> d80be6f672b45b8835adc9f328edf63667ae30a4
 			}
 			else if (format[i + 1] == 'b')
 			{

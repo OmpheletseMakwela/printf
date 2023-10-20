@@ -43,6 +43,7 @@ int _printf(const char *format, ...)
 	int i, count = 0;
 	char c, *str, b2;
 	unsigned int b;
+	short int h;
 
 	if (format == NULL)
 	{
@@ -127,6 +128,17 @@ int _printf(const char *format, ...)
 			{
 				count += _print_reverse(va_arg(arg, char *));
 				i++;
+			}
+			else if (format[i + 1] == 'l')
+			{
+				count += print_long(va_arg(arg, long int), format[i + 2]);
+				i = i + 2;
+			}
+			else if (format[i + 1] == 'h')
+			{
+				h = (short int)va_arg(arg, int);
+				count += print_short(h, format[i + 2]);
+				i = i + 2;
 			}
 			else if (format[i + 1] == 'p')
 			{

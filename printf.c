@@ -131,12 +131,12 @@ int _printf(const char *format, ...)
 			}
 			else if (format[i + 1] == 'l')
 			{
-				count += print_long(va_arg(arg, long int), format[i + 2]);
+				count += print_long(va_arg(arg, unsigned long int), format[i + 2]);
 				i = i + 2;
 			}
 			else if (format[i + 1] == 'h')
 			{
-				h = (short int)va_arg(arg, int);
+				h = (unsigned short int)va_arg(arg, int);
 				count += print_short(h, format[i + 2]);
 				i = i + 2;
 			}

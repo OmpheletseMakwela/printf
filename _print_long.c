@@ -5,12 +5,13 @@
  * @s: specifier
  * Return: length of what is printed.
  */
-int print_long(long int i, char s)
+int print_long(unsigned long int i, char s)
 {
 	unsigned int count = 0;
+	signed short int d = (signed short)i;
 
 	if (s == 'd' || s == 'i')
-		count += _printdigit(i);
+		count += _printdigit(d);
 	else if (s == 'o')
 		count += _print_octal(i);
 	else if (s == 'u')
